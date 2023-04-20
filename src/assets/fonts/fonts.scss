@@ -1,6 +1,57 @@
 @font-face {
-  font-family: "Roboto";
-  src: local("Roboto"), url("Roboto-Regular.woff") format("woff");
+  font-family: 'Inter';
+  src: local('Inter'), url('Inter.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url('Roboto-Italic.woff') format('woff');
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url('Roboto-Regular.woff') format('woff');
   font-style: normal;
   font-display: swap;
+}
+
+%title_XL {
+  font: normal 500 50px/64px 'Inter', sans-serif;
+}
+
+%title_L {
+  font: normal 500 38px/48px 'Inter', sans-serif;
+}
+
+%title_M {
+  font: normal 400 28px/38px 'Inter', sans-serif;
+}
+
+%title_S {
+  font: normal 400 20px/26px 'Inter', sans-serif;
+}
+
+%text_M {
+  font: normal 400 16px/24px 'Inter', sans-serif;
+}
+
+%text_S {
+  font: normal 400 14px/22px 'Inter', sans-serif;
+}
+
+@include respond(mobile) {
+  %title_XL {
+    font: normal 400 28px/38px 'Inter', sans-serif;
+  }
+
+  %title_L {
+    font: normal 400 24px/32px 'Inter', sans-serif;
+  }
+
+  %title_M {
+    font: normal 400 20px/26px 'Inter', sans-serif;
+  }
 }
