@@ -1,6 +1,7 @@
-@import "assets/fonts/fonts.scss";
-@import "./components/avatar/avatar.scss";
-@import "./components/button/button.scss";
+@import 'reset.css';
+@import 'mixins.scss';
+@import 'components/components.scss';
+@import 'assets/fonts/fonts.scss';
 
 :root {
   --white: #ffffff;
@@ -31,7 +32,7 @@ html[data-theme-dark] {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 html,

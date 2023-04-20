@@ -1,0 +1,44 @@
+@import '../mixins.scss';
+
+.checkbox {
+  @include control;
+
+  &__visual {
+    width: 28px;
+    height: 28px;
+    background: var(--background-primary);
+    border: 1px solid var(--grey-2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    height: 24px;
+    width: 24px;
+    color: var(--white);
+    display: none;
+  }
+
+  @include handle-state(':checked', visual) {
+    background-color: var(--blue);
+    border-color: var(--blue);
+  }
+
+  @include handle-state(':checked', icon) {
+    display: block;
+  }
+
+  @include handle-state(':focused', title) {
+    text-decoration: underline;
+  }
+
+  @include handle-state(':disabled', visual) {
+    background-color: var(--grey-2);
+  }
+
+  @include handle-state(':disabled') {
+    cursor: not-allowed;
+  }
+}

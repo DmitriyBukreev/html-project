@@ -1,0 +1,39 @@
+-
+  const range = require('../../utils/iterator.js');
+  function timeFromDay(dateObj, day) {
+    const curDay = new Date(dateObj.getTime());
+    curDay.setDate(day);
+    return curDay.getTime();
+  }
+
+  function getSelection(dateObj, fromDay, toDay) {
+    const from = timeFromDay(dateObj, fromDay);
+    const to = timeFromDay(dateObj, toDay);
+    const date = dateObj.getTime();
+    if (date == from || date == to) return 'calendar__item_active';
+    if (date > from && date < to) return 'calendar__item_between-active';
+    return '';
+  }
+
+mixin calendar(date, from, to)
+  -
+    const title = date.toLocaleString('en', { month: 'long', year: 'numeric' });
+    const monthNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    date.setDate(1)
+    const emptyDays = Array.from(range(1, date.getDay() - 1))
+    const month = date.getMonth()
+
+  .calendar
+    .calendar__title #{ title }
+    .calendar__wrapper
+      .calendar__inner
+        //- Calendar header  
+        each month in monthNames
+          span.calendar__item.calendar__item_day= month
+        //- Empty cells
+        each day in emptyDays
+          span.calendar__item
+        //- Basic days
+        while month == date.getMonth()
+          span.calendar__item(class=`${getSelection(date, from, to)}`)= date.getDate()
+          - date.setDate(date.getDate() + 1);

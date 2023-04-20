@@ -1,0 +1,32 @@
+- const sprite = '../../assets/images/icons_sprite.svg';
+
+mixin control(type, title, extended)
+  label(class=`${type}`)
+    input(class=`${type}__functional`)&attributes(attributes)
+    div(class=`${type}__state`)
+      if extended
+        svg.icon.toggler__before
+          use(href=`${require(sprite)}#sun`)
+      div(class=`${type}__visual`)
+        if type == 'checkbox'
+          svg(class=`${type}__icon`)
+            use(href=`${require(sprite)}#check`)
+        else
+          div(class=`${type}__icon`)
+      if extended
+        svg.icon.toggler__after
+          use(href=`${require(sprite)}#moon`)
+      if title
+        .title= title
+
+mixin radio(title)
+  +control('radio', title)(type='radio')&attributes(attributes)
+
+mixin toggler(title)
+  +control('toggler', title)(type='checkbox')&attributes(attributes)
+
+mixin checkbox(title)
+  +control('checkbox', title)(type='checkbox')&attributes(attributes)
+
+mixin theme-changer(title)
+  +control('toggler', title, true)(type='checkbox')&attributes(attributes)

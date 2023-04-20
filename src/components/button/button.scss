@@ -1,11 +1,7 @@
 .button {
   padding: 15px 15px 14px;
   border-radius: 8px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
+  font: normal 500 16px/19px 'Roboto', sans-serif;
   cursor: pointer;
   transition: opacity 200ms ease-in-out, background 200ms ease-in-out;
 

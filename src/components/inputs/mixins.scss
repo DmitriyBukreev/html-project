@@ -1,0 +1,38 @@
+@mixin control {
+  display: inline-flex;
+  position: relative;
+
+  &__functional {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    outline: none;
+  }
+
+  &__state {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--text);
+  }
+}
+
+@mixin handle-state($state, $element: false) {
+  @if $element {
+    &__functional#{$state} ~ &__state &__#{$element} {
+      @content;
+    }
+  } @else {
+    &__functional#{$state} ~ &__state {
+      @content;
+    }
+  }
+}
