@@ -1,18 +1,40 @@
 @import "assets/fonts/fonts.scss";
+@import "./components/avatar/avatar.scss";
+@import "./components/button/button.scss";
 
-$font-size: 1rem;
-$font-color: lch(28 99 35);
+:root {
+  --white: #ffffff;
+  --black: #212429;
+  --pink: #f784ad;
+  --purple: #7048e8;
+  --blue: #4263eb;
+  --red: #f03d3e;
+  --grey-1: #f8f9fa;
+  --grey-2: #dde2e5;
+  --grey-3: #acb5bd;
+  --grey-4: #495057;
 
-html {
-  font-family: "Roboto";
-  font-size: $font-size;
-  color: $font-color;
+  --error: var(--red);
+  --success: var(--blue);
+
+  --background-primary: var(--white);
+  --background-secondary: var(--grey-1);
+  --text: var(--black);
+  --accent: var(--black);
 }
 
-.image {
-  width: 10em;
+html[data-theme-dark] {
+  --background-primary: var(--black);
+  --background-secondary: var(--grey-4);
+  --text: var(--grey-3);
+  --accent: var(--white);
 }
 
-.logo {
-  width: 10em;
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
 }
