@@ -7,12 +7,16 @@ html(lang='ru')
     meta(charset='utf-8')
     title= 'Test page'
   body
-    +styledButton('Primary')
-    +styledButton('Secondary', type='secondary')
-    +styledButton('Alternate', type='alternate')
-    +styledButton('Primary', type='primary', disabled=true)
-    +styledButton('Secondary', type='secondary', true)
-    +styledButton('Alternate', type='alternate', true)
+    +avatar(require('@images/avatar-200.jpg'))
+    +avatar(require('@images/avatar-200.jpg'), isLarge=true)
+    +styledButton Primary
+    +styledButton('secondary') Secondary
+    +styledButton('alternate') Alternate
+    +styledButton('primary')(disabled) Disabled
+    +styledButton('secondary')(disabled) Disabled
+    +styledButton('alternate')(disabled) Disabled
+    //- +styledButton('Secondary', type='secondary', true)
+    //- +styledButton('Alternate', type='alternate', true)
     div(style={ width: '200px' })
       - const date = new Date();
       +calendar(date, from=5, to=14)
