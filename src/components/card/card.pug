@@ -1,0 +1,7 @@
+mixin card(link, title, category, grid=false)
+  a.card(href=link)
+    .card__body(class=`${grid  ? 'card__body_grid' : ''}`)
+      block
+    .card__footer
+      .card__title= title
+      .card__category= category

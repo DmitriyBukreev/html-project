@@ -1,7 +1,7 @@
 doctype html
 include components/components.pug
 
-html(lang='ru')
+html(lang='ru', style={ background: '#acb5bd' })
   head
     link(href=require('main.scss'), rel='stylesheet')
     meta(charset='utf-8')
@@ -15,19 +15,6 @@ html(lang='ru')
     +styledButton('primary')(disabled) Disabled
     +styledButton('secondary')(disabled) Disabled
     +styledButton('alternate')(disabled) Disabled
-    //- +styledButton('Secondary', type='secondary', true)
-    //- +styledButton('Alternate', type='alternate', true)
-    div(style={ width: '200px' })
-      - const date = new Date();
-      +calendar(date, from=5, to=14)
-    div(style='display: flex')
-      +checkbox('Checkbox')
-      +checkbox('Checkbox checked')(checked)
-      +checkbox('Checkbox disabled')(disabled)
-    div(style='display: flex')
-      +radio('Radio 1')(name='group')
-      +radio('Radio 2')(name='group', checked)
-      +radio('Radio 3')(name='group', disabled)
     div(style='display: flex')
       +toggler
       +toggler(_)(checked)
@@ -36,3 +23,13 @@ html(lang='ru')
       +theme-changer
       +theme-changer(_)(checked)
       +theme-changer('Theme changer')(disabled)
+    +card('/link', 'Calendar', 'Container')
+      - const date = new Date();
+      +calendar(date, from=5, to=14)
+    +card('/link', 'Custom form elements', 'Element', grid=true)
+      +checkbox('Checkbox')
+      +radio('Radio 1')(name='group')
+      +checkbox('Checkbox checked')(checked)
+      +radio('Radio 2')(name='group', checked)
+      +checkbox('Checkbox disabled')(disabled)
+      +radio('Radio 3')(name='group', disabled)

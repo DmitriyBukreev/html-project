@@ -17,7 +17,7 @@ mixin control(type, title, extended)
         svg.icon.toggler__after
           use(href=`${require(sprite)}#moon`)
       if title
-        .title= title
+        div(class=`${type}__title`)= title
 
 mixin radio(title)
   +control('radio', title)(type='radio')&attributes(attributes)
