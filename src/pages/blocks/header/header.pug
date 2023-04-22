@@ -1,0 +1,13 @@
+- const sprites = require('@images/icons_sprite.svg');
+header.header
+  .container
+    .header__inner
+      button#burger-menu-open.header__menu
+        svg.icon
+          use(href=`${sprites}#menu`)
+      // Burger menu here
+      svg.logo
+        use(href=`${sprites}#logo`)
+      .header__theme-changer
+        +theme-changer
+    h1.header__title Reusable component library

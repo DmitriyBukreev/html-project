@@ -1,0 +1,2 @@
+- [ ] make a separate config for dev and serve options
+- [ ] add 'pretty' option for pug-plugin

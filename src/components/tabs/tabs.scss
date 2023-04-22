@@ -1,0 +1,60 @@
+// Classes use to make SCSS produce coma separated classes
+// with @each rule
+%selected_label {
+  color: var(--accent);
+  border-bottom-color: var(--text);
+}
+
+%invisible_tab {
+  display: none;
+}
+
+%visible_tab {
+  display: block;
+}
+
+.tabs {
+  background: var(--background-primary);
+
+  &__scrollable {
+    display: flex;
+    gap: 40px;
+    overflow-x: auto;
+  }
+
+  &__scrollable::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__label {
+    @extend %text_M;
+    color: var(--grey-3);
+    padding-bottom: 8px;
+    display: block;
+    border-bottom: 5px solid transparent;
+    white-space: nowrap;
+  }
+
+  $tab_names: all-tab, elements-tab, containers-tab, templates-tab, html-tab,
+    css-tab;
+
+  @each $name in $tab_names {
+    ##{$name}:checked ~ &__scroller &__label[for='#{$name}'] {
+      @extend %selected_label;
+    }
+
+    &__content_#{$name} {
+      @extend %invisible_tab;
+    }
+
+    ##{$name}:checked ~ &__content_#{$name} {
+      @extend %visible_tab;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    outline: none;
+    clip: rect(0, 0, 0, 0);
+  }
+}

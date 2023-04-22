@@ -1,35 +1,30 @@
-doctype html
-include components/components.pug
+extends pages/template.pug
 
-html(lang='ru', style={ background: '#acb5bd' })
-  head
-    link(href=require('main.scss'), rel='stylesheet')
-    meta(charset='utf-8')
-    title= 'Test page'
-  body
-    +avatar(require('@images/avatar-200.jpg'))
-    +avatar(require('@images/avatar-200.jpg'), isLarge=true)
-    +styledButton Primary
-    +styledButton('secondary') Secondary
-    +styledButton('alternate') Alternate
-    +styledButton('primary')(disabled) Disabled
-    +styledButton('secondary')(disabled) Disabled
-    +styledButton('alternate')(disabled) Disabled
-    div(style='display: flex')
-      +toggler
-      +toggler(_)(checked)
-      +toggler('Disabled')(disabled)
-    div(style='display: flex')
-      +theme-changer
-      +theme-changer(_)(checked)
-      +theme-changer('Theme changer')(disabled)
-    +card('/link', 'Calendar', 'Container')
-      - const date = new Date();
-      +calendar(date, from=5, to=14)
-    +card('/link', 'Custom form elements', 'Element', grid=true)
-      +checkbox('Checkbox')
-      +radio('Radio 1')(name='group')
-      +checkbox('Checkbox checked')(checked)
-      +radio('Radio 2')(name='group', checked)
-      +checkbox('Checkbox disabled')(disabled)
-      +radio('Radio 3')(name='group', disabled)
+block content
+  -
+    const map = { 
+      'all-tab': 'All components',
+      'elements-tab': 'Elements',
+      'containers-tab': 'Containers',
+      'templates-tab': 'Templates'
+    }
+
+  +tab-control(map)
+    +tab-content('all-tab')
+      section.preview
+        .container
+          .preview__inner
+            +card 
+            +card 
+            +card
+    +tab-content('elements-tab')= 'Hello'
+
+block footer
+  footer.footer
+    .footer__inner
+      .footer__title About
+      p.footer__description
+        | This project is a collection of professionally designed, pre-built,
+        | fully responsive HTML snippets you can drop into your projects. Get
+        | started by checking out our free preview components, or browsing the
+        | PNG previews in the categories you're most curious about.

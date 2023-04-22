@@ -1,0 +1,9 @@
+.logo {
+  height: 32px;
+  width: 110px;
+  color: var(--accent);
+
+  @include respond(tablet) {
+    justify-self: center;
+  }
+}

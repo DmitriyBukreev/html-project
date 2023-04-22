@@ -1,0 +1,25 @@
+mixin tab-control(options)
+  - const first = Object.keys(options)[0];
+
+  .tabs
+    each _, id in options
+      input.tabs__input(
+        type='radio',
+        name='tab-choice',
+        id=`${id}`,
+        checked=id == first
+      )
+
+    .tabs__scroller
+      .container
+        .tabs__scrollable
+          each text, id in options
+            label.tabs__label(for=`${id}`)= text
+
+    .separator
+
+    block
+
+mixin tab-content(id)
+  .tabs__content(class=`tabs__content_${id}`)
+    block

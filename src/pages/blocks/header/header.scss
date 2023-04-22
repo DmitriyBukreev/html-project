@@ -1,0 +1,51 @@
+.header {
+  padding: 24px 0px;
+  background-color: var(--background-primary);
+
+  @include respond(tablet) {
+    padding: 17px 0px;
+  }
+
+  &__inner {
+    display: grid;
+    grid: 'left center right';
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 64px;
+    font-style: normal;
+    font-family: Inter;
+    color: var(--text);
+
+    @include respond(tablet) {
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 38px;
+    }
+  }
+
+  &__menu {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    display: none;
+    color: var(--text);
+
+    @include respond(tablet) {
+      display: block;
+      justify-self: left;
+    }
+  }
+
+  &__theme-changer {
+    grid-area: right;
+    justify-self: right;
+
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+}

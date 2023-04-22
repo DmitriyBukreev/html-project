@@ -1,0 +1,10 @@
+.preview {
+  background: var(--background-secondary);
+  padding: 68px 0px 204px;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+}

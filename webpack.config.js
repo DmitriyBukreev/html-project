@@ -20,8 +20,10 @@ module.exports = {
 
   resolve: {
     alias: {
+      '@src': path.resolve(__dirname, 'src'),
       '@utils': path.resolve(__dirname, 'src', 'utils'),
       '@images': path.resolve(__dirname, 'src', 'assets', 'images'),
+      '@blocks': path.resolve(__dirname, 'src', 'blocks'),
     },
   },
 
