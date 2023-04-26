@@ -29,4 +29,4 @@ mixin checkbox(title)
   +control('checkbox', title)(type='checkbox')&attributes(attributes)
 
 mixin theme-changer(title)
-  +control('toggler', title, true)(type='checkbox')&attributes(attributes)
+  +control('toggler', title, true)(type='checkbox', data-theme-changer)&attributes(attributes)

@@ -14,9 +14,18 @@ block content
       section.preview
         .container
           .preview__inner
-            +card 
-            +card 
-            +card
+            +card('inputs', 'Custom form elements', 'Element', grid=true)
+              +checkbox('Default')
+              +radio('Default')
+              +checkbox('Checked')(checked)
+              +radio('Selected')(checked)
+              +checkbox('Disabled')(disabled)
+              +radio('Disabled')(disabled)
+            +card('calendar', 'Calendar', 'Container')
+              - const date = new Date();
+              +calendar(date, 6, 12)
+            +card('avatar', 'Avatar', 'Element')
+              +avatar(require('@images/avatar-200.jpg'), isLarge=true)
     +tab-content('elements-tab')= 'Hello'
 
 block footer

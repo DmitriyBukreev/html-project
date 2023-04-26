@@ -3,9 +3,10 @@ doctype html
 include ../components/components
 
 head
-  //- here goes theme-changer script
-  //- and burger menu
+  script(src=require('@src/components/inputs/toggler/theme-changer.js'), defer)
+  //- here goes burger menu
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(name='color-scheme', content='dark light')
   link(rel='stylesheet', href=require('@src/main.scss'))
   block head
     title HTML project
