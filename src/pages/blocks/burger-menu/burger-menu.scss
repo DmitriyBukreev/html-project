@@ -1,0 +1,55 @@
+.burger-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  // moved it further to the left to make sure
+  // it won't appear while resizing window
+  transform: translateX(-200vw);
+  // doubled the time it takes to travel accordingly
+  transition: transform 400ms linear;
+  z-index: 100;
+  background-color: var(--background-primary);
+  overflow: auto;
+
+  &[data-open] {
+    transform: none;
+  }
+
+  &__button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+
+    &_close {
+      height: 32px;
+      width: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: left;
+      color: var(--text);
+
+      &:hover {
+        background-color: var(--grey-2);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__header {
+    display: grid;
+    grid: 'left center right';
+    padding: 16px 0px;
+  }
+
+  &__theme-changer {
+    padding: 24px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @extend %text_M;
+    color: var(--text);
+  }
+}

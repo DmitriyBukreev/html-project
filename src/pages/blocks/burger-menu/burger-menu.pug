@@ -1,0 +1,17 @@
+//- sprites variable declared in header.pug
+//- can I restrict its scope somehow?
+
+#burger-menu.burger-menu
+  .container
+    .burger-menu__header
+      button#burger-menu-close.burger-menu__button.burger-menu__button_close
+        svg.icon
+          use(href=`${sprites}#cross`)
+      svg.logo
+        use(href=`${sprites}#logo`)
+    .separator
+    .burger-menu__theme-changer
+      p Dark mode
+      +theme-changer
+    .separator
+    //- menu goes here
