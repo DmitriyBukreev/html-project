@@ -16,11 +16,7 @@
   }
 
   &__title {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    @extend %text_M;
     color: var(--text);
     text-decoration: none;
   }

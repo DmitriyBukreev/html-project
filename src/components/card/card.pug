@@ -1,6 +1,6 @@
-mixin card(link, title, category, grid=false)
+mixin card(link, title, category)
   a.card(href=link)
-    .card__body(class=`${grid  ? 'card__body_grid' : ''}`)
+    .card__body
       block
     .card__footer
       .card__title= title

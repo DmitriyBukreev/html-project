@@ -21,13 +21,14 @@ block content
       section.preview
         .container
           .preview__inner
-            +card('inputs', 'Custom form elements', 'Element', grid=true)
-              +checkbox('Default')
-              +radio('Default')
-              +checkbox('Checked')(checked)
-              +radio('Selected')(checked)
-              +checkbox('Disabled')(disabled)
-              +radio('Disabled')(disabled)
+            +card('inputs', 'Custom form elements', 'Element')
+              .demo
+                +checkbox('Default')
+                +radio('Default')
+                +checkbox('Checked')(checked)
+                +radio('Selected')(checked)
+                +checkbox('Disabled')(disabled)
+                +radio('Disabled')(disabled)
             +card('calendar', 'Calendar', 'Container')
               - const date = new Date();
               +calendar(date, 6, 12)

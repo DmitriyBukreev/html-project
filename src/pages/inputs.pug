@@ -1,0 +1,232 @@
+extends ../templates/component_page.pug
+
+block head
+  -
+    const menuConfig = require('@templates/menu/menu-config.js');
+    menuConfig['Elements']['Custom form elements'].isActive = true;
+  title Custom form elements
+
+block componentTitle
+  | Custom form elements
+
+block componentContent
+  .demo
+    +checkbox('Default')
+    +radio('Default')(name='group')
+    +checkbox('Checked')(checked)
+    +radio('Selected')(checked, name='group')
+    +checkbox('Disabled')(disabled)
+    +radio('Disabled')(disabled)
+
+block htmlCode
+  :highlight(html)
+    <!-- Checkbox default -->
+    <label class="checkbox">
+      <input class="checkbox__functional" type="checkbox" />
+      <div class="checkbox__state">
+        <div class="checkbox__visual">
+          <svg class="checkbox__icon">
+            <use href="icons/icons_sprite.svg#check"></use>
+          </svg>
+        </div>
+        <div class="checkbox__title">Default</div>
+      </div>
+    </label>
+
+    <!-- Radio default -->
+    <label class="radio">
+      <input class="radio__functional" type="radio" name="group" />
+      <div class="radio__state">
+        <div class="radio__visual"><div class="radio__icon"></div></div>
+        <div class="radio__title">Default</div>
+      </div>
+    </label>
+
+    <!-- Checkbox checked -->
+    <label class="checkbox">
+      <input class="checkbox__functional" type="checkbox" checked />
+      <div class="checkbox__state">
+        <div class="checkbox__visual">
+          <svg class="checkbox__icon">
+            <use href="icons/icons_sprite.svg#check"></use>
+          </svg>
+        </div>
+        <div class="checkbox__title">Checked</div>
+      </div>
+    </label>
+
+    <!-- Radio checked -->
+    <label class="radio">
+      <input class="radio__functional" type="radio" checked name="group" />
+      <div class="radio__state">
+        <div class="radio__visual"><div class="radio__icon"></div></div>
+        <div class="radio__title">Selected</div>
+      </div>
+    </label>
+
+    <!-- Checkbox disabled -->
+    <label class="checkbox"
+      ><input class="checkbox__functional" type="checkbox" disabled />
+      <div class="checkbox__state">
+        <div class="checkbox__visual">
+          <svg class="checkbox__icon">
+            <use href="icons/icons_sprite.svg#check"></use>
+          </svg>
+        </div>
+        <div class="checkbox__title">Disabled</div>
+      </div>
+    </label>
+
+    <!-- Radio disabled -->
+    <label class="radio">
+      <input class="radio__functional" type="radio" disabled />
+      <div class="radio__state">
+        <div class="radio__visual"><div class="radio__icon"></div></div>
+        <div class="radio__title">Disabled</div>
+      </div>
+    </label>
+
+
+block cssCode
+  :highlight(css)
+    /* Checkbox-start */
+    .checkbox {
+      display: inline-flex;
+      position: relative;
+    }
+
+    .checkbox__functional {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      outline: none;
+    }
+
+    .checkbox__state {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .checkbox__title {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .checkbox__visual {
+      width: 28px;
+      height: 28px;
+      background: var(--background-primary);
+      border: 1px solid var(--grey-2);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .checkbox__icon {
+      height: 24px;
+      width: 24px;
+      color: var(--white);
+      display: none;
+    }
+
+    .checkbox__functional:checked ~ .checkbox__state .checkbox__visual {
+      background-color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .checkbox__functional:checked ~ .checkbox__state .checkbox__icon {
+      display: block;
+    }
+
+    .checkbox__functional:focused ~ .checkbox__state .checkbox__title {
+      text-decoration: underline;
+    }
+
+    .checkbox__functional:disabled ~ .checkbox__state .checkbox__visual {
+      background-color: var(--grey-2);
+    }
+
+    .checkbox__functional:disabled ~ .checkbox__state {
+      cursor: not-allowed;
+    }
+    /* Checkbox-end */
+
+    /* Radio-start */
+    .radio {
+      display: inline-flex;
+      position: relative;
+    }
+
+    .radio__functional {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      outline: none;
+    }
+
+    .radio__state {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .radio__title {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .radio__visual {
+      width: 28px;
+      height: 28px;
+      background: var(--background-primary);
+      border: 1px solid var(--grey-2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .radio__icon {
+      width: 18px;
+      height: 18px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: none;
+    }
+
+    .radio__functional:checked ~ .radio__state .radio__visual {
+      border: 2px solid var(--blue);
+    }
+
+    .radio__functional:checked ~ .radio__state .radio__icon {
+      display: block;
+    }
+
+    .radio__functional:focus ~ .radio__state .radio__title {
+      text-decoration: underline;
+    }
+
+    .radio__functional:disabled ~ .radio__state .radio__visual {
+      background-color: var(--grey-2);
+    }
+
+    .radio__functional:disabled ~ .radio__state .radio__title {
+      color: var(--grey-2);
+    }
+
+    .radio__functional:disabled ~ .radio__state {
+      cursor: not-allowed;
+    }
+    /* Radio-end */
