@@ -1,0 +1,7 @@
+mixin tooltip(text, top=false, displayed=false)
+  .tooltip
+    .tooltip__trigger
+      block
+    .tooltip__bubble(
+      class=`${top ? 'tooltip__bubble_top' : ''} ${displayed ? 'tooltip__bubble_displayed' : ''}`
+    )= text

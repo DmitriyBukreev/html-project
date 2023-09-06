@@ -1,0 +1,54 @@
+.tooltip {
+  display: inline-block;
+  position: relative;
+
+  &__trigger {
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  &__bubble {
+    @extend %text_M;
+    text-align: center;
+    color: var(--grey-2);
+    background: var(--blue);
+    border-radius: 10px;
+    display: none;
+    padding: 8px 21px;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    white-space: nowrap;
+    transform: translateX(-50%);
+
+    // Arrow drawn with borders
+    &:before {
+      content: '';
+      border: 10px solid transparent;
+      border-bottom-color: var(--blue);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &_top {
+      bottom: calc(100% + 8px);
+      top: initial;
+
+      &:before {
+        top: 100%;
+        border-bottom-color: transparent;
+        border-top-color: var(--blue);
+      }
+    }
+
+    &_displayed {
+      display: block;
+    }
+  }
+
+  &__trigger:hover ~ &__bubble {
+    display: block;
+  }
+}

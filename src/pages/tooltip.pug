@@ -1,0 +1,86 @@
+extends ../templates/component_page.pug
+
+block head
+  -
+    const menuConfig = require('@templates/menu/menu-config.js');
+    menuConfig['Containers']['Tooltip'].isActive = true;
+  title Tooltip
+
+block componentTitle
+  | Tooltip
+
+block componentContent
+  +tooltip('Helper text', true)
+    svg.icon: use(
+      href=`${require('../assets/images/icons_sprite.svg')}#questionmark`
+    )
+
+block htmlCode
+  :highlight(html)
+    <div class="tooltip">
+      <div class="tooltip__trigger">
+        <svg class="icon">
+          <use href="icons/icons_sprite.svg#questionmark"></use>
+        </svg>
+      </div>
+      <div class="tooltip__bubble tooltip__bubble_top">Helper text</div>
+    </div>
+
+block cssCode
+  :highlight(css)
+    .tooltip {
+      display: inline-block;
+      position: relative;
+    }
+
+    .tooltip__bubble {
+      font: normal 400 16px/24px 'Inter', sans-serif;
+    }
+
+    .tooltip__trigger {
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .tooltip__bubble {
+      text-align: center;
+      color: var(--grey-2);
+      background: var(--blue);
+      border-radius: 10px;
+      display: none;
+      padding: 8px 21px;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      white-space: nowrap;
+      transform: translateX(-50%);
+    }
+
+    .tooltip__bubble:before {
+      content: '';
+      border: 10px solid transparent;
+      border-bottom-color: var(--blue);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .tooltip__bubble_top {
+      bottom: calc(100% + 8px);
+      top: initial;
+    }
+
+    .tooltip__bubble_top:before {
+      top: 100%;
+      border-bottom-color: transparent;
+      border-top-color: var(--blue);
+    }
+
+    .tooltip__bubble_displayed {
+      display: block;
+    }
+
+    .tooltip__trigger:hover ~ .tooltip__bubble {
+      display: block;
+    }

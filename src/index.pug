@@ -39,6 +39,12 @@ block content
                 const data = Array.from({length: 40}, () => Math.floor(Math.random() * 40));
               +histogram("Total orders", "123456", data).histogram_embedded
 
+            +card('tooltip', 'Tooltip', 'Container')
+              +tooltip('Helper text', true, true)
+                svg.icon: use(
+                  href=`${require('assets/images/icons_sprite.svg')}#questionmark`
+                )
+
     +tab-content('elements-tab')= 'Hello'
 
 block footer
