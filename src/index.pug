@@ -1,4 +1,11 @@
-extends pages/template.pug
+extends templates/template.pug
+
+block head
+  - const menuConfig = require('templates/menu/menu-config.js');
+  title HTML project
+
+block title
+  h1.header__title Reusable component library
 
 block content
   -
@@ -26,6 +33,11 @@ block content
               +calendar(date, 6, 12)
             +card('avatar', 'Avatar', 'Element')
               +avatar(require('@images/avatar-200.jpg'), isLarge=true)
+            +card('histogram', 'Histogram', 'Template')
+              -
+                const data = Array.from({length: 40}, () => Math.floor(Math.random() * 40));
+              +histogram("Total orders", "123456", data).histogram_embedded
+
     +tab-content('elements-tab')= 'Hello'
 
 block footer

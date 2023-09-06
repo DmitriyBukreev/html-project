@@ -3,10 +3,21 @@ const FileManagerPlugin = require('filemanager-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 const path = require('path');
+const fs = require('fs');
+
+function getEntries(folder, pattern = /.*/) {
+  const files = fs.readdirSync(folder).filter((item) => item.match(pattern));
+  const entries = files.map((file) => [
+    file.replace(pattern, ''),
+    path.join(folder, file),
+  ]);
+  return Object.fromEntries(entries);
+}
 
 module.exports = {
   entry: {
     index: path.join(__dirname, 'src', 'index.pug'),
+    ...getEntries(path.join(__dirname, 'src', 'pages'), /\.pug$/),
   },
 
   output: {
@@ -23,7 +34,7 @@ module.exports = {
       '@src': path.resolve(__dirname, 'src'),
       '@utils': path.resolve(__dirname, 'src', 'utils'),
       '@images': path.resolve(__dirname, 'src', 'assets', 'images'),
-      '@blocks': path.resolve(__dirname, 'src', 'blocks'),
+      '@templates': path.resolve(__dirname, 'src', 'templates'),
     },
   },
 
@@ -37,6 +48,14 @@ module.exports = {
       {
         test: /\.pug$/,
         loader: PugPlugin.loader,
+        options: {
+          embedFilters: {
+            highlight: {
+              verbose: true,
+              use: 'prismjs',
+            },
+          },
+        },
       },
       {
         test: /\.(scss|css)$/,
@@ -98,6 +117,17 @@ module.exports = {
   devServer: {
     watchFiles: path.join(__dirname, 'src'),
     port: 9000,
+    historyApiFallback: {
+      rewrites: [
+        // Append .html to have access to pages
+        {
+          from: /.*/,
+          to: (context) => {
+            return `${context.parsedUrl.pathname}.html`;
+          },
+        },
+      ],
+    },
   },
 
   optimization: {

@@ -1,0 +1,125 @@
+extends ../templates/component_page.pug
+
+block head
+  -
+    const menuConfig = require('@templates/menu/menu-config.js');
+    menuConfig['Containers']['Calendar'].isActive = true;
+  title Calendar
+
+block componentTitle
+  | Calendar
+
+block componentContent
+  - const date = new Date();
+  +calendar(date, 6, 12)
+
+block htmlCode
+  :highlight(html)
+    <div class="calendar">
+      <div class="calendar__title">September 2023</div>
+      <div class="calendar__wrapper">
+        <div class="calendar__inner">
+          <span class="calendar__item calendar__item_day">Mon</span>
+          <span class="calendar__item calendar__item_day">Tue</span>
+          <span class="calendar__item calendar__item_day">Wed</span>
+          <span class="calendar__item calendar__item_day">Thu</span>
+          <span class="calendar__item calendar__item_day">Fri</span>
+          <span class="calendar__item calendar__item_day">Sat</span>
+          <span class="calendar__item calendar__item_day">Sun</span>
+          <span class="calendar__item"></span>
+          <span class="calendar__item"></span>
+          <span class="calendar__item"></span>
+          <span class="calendar__item"></span>
+          <span class="calendar__item">1</span>
+          <span class="calendar__item">2</span>
+          <span class="calendar__item">3</span>
+          <span class="calendar__item">4</span>
+          <span class="calendar__item">5</span>
+          <span class="calendar__item calendar__item_active">6</span>
+          <span class="calendar__item calendar__item_between-active">7</span>
+          <span class="calendar__item calendar__item_between-active">8</span>
+          <span class="calendar__item calendar__item_between-active">9</span>
+          <span class="calendar__item calendar__item_between-active">10</span>
+          <span class="calendar__item calendar__item_between-active">11</span>
+          <span class="calendar__item calendar__item_active">12</span>
+          <span class="calendar__item">13</span>
+          <span class="calendar__item">14</span>
+          <span class="calendar__item">15</span>
+          <span class="calendar__item">16</span>
+          <span class="calendar__item">17</span>
+          <span class="calendar__item">18</span>
+          <span class="calendar__item">19</span>
+          <span class="calendar__item">20</span>
+          <span class="calendar__item">21</span>
+          <span class="calendar__item">22</span>
+          <span class="calendar__item">23</span>
+          <span class="calendar__item">24</span>
+          <span class="calendar__item">25</span>
+          <span class="calendar__item">26</span>
+          <span class="calendar__item">27</span>
+          <span class="calendar__item">28</span>
+          <span class="calendar__item">29</span>
+          <span class="calendar__item">30</span>
+        </div>
+      </div>
+    </div>
+
+block cssCode
+  :highlight(css)
+    .calendar {
+      background: var(--background-primary);
+      border: 1px solid var(--grey-3);
+      border-radius: 8px;
+      padding: 28px 26px 40px;
+      --day-color: #90a0b7;
+      --selection-background: rgba(160, 177, 245, 20);
+      min-width: 200px;
+    }
+
+    .calendar__title {
+      text-align: center;
+      font: normal 600 20px/24px 'Inter', sans-serif;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .calendar__wrapper {
+      position: relative;
+      padding-bottom: 100%;
+    }
+
+    .calendar__inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(7, 1fr);
+    }
+
+    .calendar__item {
+      font: normal 400 14px/20px 'Inter', sans-serif;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .calendar__item:first-child {
+      grid-column-start: var(--start-from);
+    }
+
+    .calendar__item_day {
+      color: var(--day-color);
+    }
+
+    .calendar__item_active {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .calendar__item_between-active {
+      background-color: var(--selection-background);
+    }

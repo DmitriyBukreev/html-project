@@ -1,0 +1,21 @@
+-
+  const map = { 
+    'html-tab': 'HTML',
+    'css-tab': 'CSS',
+    }
+
+.description
+  section.description__view
+    h3.description__title
+      block componentTitle
+    .description__component
+      block componentContent
+
+    +tab-control(map)
+      +tab-content('html-tab')
+        pre.language-html: code
+          block htmlCode
+
+      +tab-content('css-tab')
+        pre.language-css: code
+          block cssCode

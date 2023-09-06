@@ -1,24 +1,21 @@
 doctype html
 
 include ../components/components
+include menu/menu
 
 head
   script(src=require('@src/components/inputs/toggler/theme-changer.js'), defer)
-  script(src=require('@src/pages/blocks/burger-menu/burger-menu.js'), defer)
+  script(src=require('@templates/burger-menu/burger-menu.js'), defer)
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
   meta(name='color-scheme', content='dark light')
   link(rel='stylesheet', href=require('@src/main.scss'))
   block head
-    title HTML project
 
 body
   .page
-    include blocks/header/header
+    include header/header
 
     block content
-      main.content
-        .container
-          .content__inner
 
     block footer
       footer.license REUSABLE COMPONENT LIBRARY

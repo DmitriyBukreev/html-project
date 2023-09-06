@@ -1,0 +1,103 @@
+extends ../templates/component_page.pug
+
+block head
+  -
+    const menuConfig = require('@templates/menu/menu-config.js');
+    menuConfig['Templates']['Histogram'].isActive = true;
+  title Histogram
+
+block componentTitle
+  | Histogram
+
+block componentContent
+  -
+    const data = Array.from({length: 40}, () => Math.floor(Math.random() * 40));
+  +histogram("Total orders", "123456", data, '/histogram').histogram_embedded
+
+block htmlCode
+  :highlight(html)
+    <div class="histogram histogram_embedded">
+      <div class="histogram__header">
+        <div>
+          <p class="histogram__title">Total orders</p>
+          <p class="histogram__value">123456</p>
+        </div>
+        <a class="histogram__details" href="/histogram">View all</a>
+      </div>
+      <div class="histogram__chart">
+        <div class="histogram__bar" style="height: 77%"></div>
+        <div class="histogram__bar" style="height: 8%"></div>
+        <div class="histogram__bar" style="height: 77%"></div>
+        <div class="histogram__bar" style="height: 15%"></div>
+        ...
+      </div>
+
+block cssCode
+  :highlight(css)
+    .histogram {
+      background: var(--background-primary);
+      border: 1px solid var(--grey-3);
+      border-radius: 8px;
+      padding: 16px 24px 24px;
+      --element-color: var(--blue);
+    }
+
+    .histogram__header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .histogram__title {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .histogram__details {
+      padding-top: 3px;
+      color: var(--blue);
+      cursor: pointer;
+    }
+
+    .histogram__details:hover {
+      text-decoration: underline;
+    }
+
+    .histogram__link {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: var(--element-color);
+    }
+
+    .histogram__value {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 26px;
+      color: var(--text);
+    }
+
+    .histogram__chart {
+      height: 50px;
+      margin-top: 39px;
+      display: flex;
+      align-items: flex-end;
+      gap: 1px;
+    }
+
+    .histogram__bar {
+      background-color: var(--element-color);
+      flex: auto;
+    }
+
+    .histogram_embedded {
+      flex-grow: 1;
+    }

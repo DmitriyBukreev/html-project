@@ -1,0 +1,10 @@
+extends template
+
+block content
+  main.content
+    .container
+      .content__inner
+        block menu
+          +menu(menuConfig)
+
+        include description/description

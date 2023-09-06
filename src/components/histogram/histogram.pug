@@ -1,0 +1,21 @@
+-
+  function dataToPercents(data=[]) {
+    const maxValue = Math.max(...data);
+    return data.map(item => ((item / maxValue) * 100).toFixed(0) );
+  }
+
+mixin histogram(title, value, data, details)
+  .histogram&attributes(attributes)
+    .histogram__header
+      div
+        p.histogram__title= title
+        p.histogram__value= value
+      if details
+        a.histogram__details(href=details) View all
+      else
+        p.histogram__details View all
+    .histogram__chart
+      -
+        const percents = dataToPercents(data);
+      each item in percents
+        .histogram__bar(style=`height: ${item}%`)

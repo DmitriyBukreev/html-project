@@ -7,8 +7,9 @@ header.header
         svg.icon
           use(href=`${sprites}#menu`)
       include ../burger-menu/burger-menu
-      svg.logo
-        use(href=`${sprites}#logo`)
+      a(href='/')
+        svg.logo
+          use(href=`${sprites}#logo`)
       .header__theme-changer
         +theme-changer
-    h1.header__title Reusable component library
+    block title

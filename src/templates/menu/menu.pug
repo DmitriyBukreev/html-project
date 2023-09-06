@@ -1,0 +1,10 @@
+mixin menu(config, isTablet=false)
+  .menu(class=isTablet ? 'menu_tablet' : '')
+    each sectionItems, sectionTitle in config
+      if isTablet
+        .separator
+      .menu__section
+        h4.menu__title= sectionTitle
+        each item, itemTitle in sectionItems
+          - const onActive = item.isActive ? 'menu__item_active' : '';
+          a.menu__item(href=`${item.link}`, class=`${onActive}`)= itemTitle

@@ -1,0 +1,48 @@
+.menu {
+  @include respond(tablet) {
+    display: none;
+  }
+
+  &__item {
+    @extend %text_S;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: block;
+    text-decoration: none;
+
+    &_active {
+      color: #d84910;
+    }
+  }
+
+  &__title {
+    @extend %title_S;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  &__section {
+    padding-bottom: 32px;
+  }
+
+  &_tablet {
+    display: block;
+  }
+
+  &_tablet &__item {
+    @extend %text_M;
+    margin-bottom: 16px;
+  }
+
+  &_tablet &__title {
+    color: var(--grey-3);
+  }
+
+  &_tablet &__section {
+    padding: 24px 0px;
+  }
+
+  &__item:last-child {
+    margin-bottom: 0px;
+  }
+}

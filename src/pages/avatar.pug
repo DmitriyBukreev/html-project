@@ -1,0 +1,40 @@
+extends ../templates/component_page.pug
+
+block head
+  -
+    const menuConfig = require('@templates/menu/menu-config.js');
+    menuConfig['Elements']['Avatar'].isActive = true;
+  title Avatar
+
+block componentTitle
+  | Avatar
+
+block componentContent
+  +avatar(require('@images/avatar-200.jpg'))
+
+block htmlCode
+  :highlight(html)
+    <div class="avatar avatar_large">
+      <img
+        class="avatar__image"
+        src="/assets/images/avatar-200.jpg"
+        alt="Avatar image"
+      />
+    </div>
+
+block cssCode
+  :highlight(css)
+    .avatar {
+      width: 102px;
+      height: 102px;
+    }
+    .avatar_large {
+      width: 160px;
+      height: 160px;
+    }
+    .avatar__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
