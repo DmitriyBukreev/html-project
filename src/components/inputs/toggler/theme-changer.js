@@ -15,7 +15,7 @@ if (currentTheme == 'dark') {
 
 function changeHandler() {
   document.documentElement.toggleAttribute('data-theme-dark');
-  for (button of buttons) {
+  for (const button of buttons) {
     button.checked = this.checked;
   }
   const switchTo = localStorage.getItem('theme') == 'dark' ? 'light' : 'dark';

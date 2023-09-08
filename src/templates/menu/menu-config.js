@@ -6,9 +6,9 @@ module.exports = {
   Containers: {
     Tooltip: { link: 'tooltip' },
     Calendar: { link: 'calendar' },
-    'Modal dialog': { link: 'modal' },
   },
   Templates: {
     Histogram: { link: 'histogram' },
+    'Modal dialog': { link: 'modal' },
   },
 };

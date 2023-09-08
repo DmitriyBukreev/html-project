@@ -1,0 +1,11 @@
+mixin modal(title, control_id, close_id, embedded=false)
+  .modal(id=control_id, class=`${embedded ? 'modal_embedded' : ''}`)
+    .modal__window(class=`${embedded ? 'modal__window_embedded' : ''}`)
+      svg.modal__close(id=close_id): use(
+        href=`${require('../../assets/images/icons_sprite.svg')}#cross`
+      )
+      if title
+        .modal__title= title
+      if block
+        .modal__content
+          block

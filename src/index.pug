@@ -45,6 +45,18 @@ block content
                   href=`${require('assets/images/icons_sprite.svg')}#questionmark`
                 )
 
+            +card('modal', 'Modal dialog', 'Template')
+              +modal('Modal title', 'modal', 'modal-close', true)
+                form.form
+                  +text-field('Email', 'email').text-field__input_small(
+                    placeholder='test@example.com'
+                  )
+                  +text-field('Password', 'password', 'error').text-field__input_small(
+                    type='password'
+                  )
+                  +styledButton.form__button.button_small(type='submit')
+                    | Submit
+
     +tab-content('elements-tab')= 'Hello'
 
 block footer

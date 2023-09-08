@@ -1,0 +1,11 @@
+mixin text-field(label, id, status="")
+  .text-field(class=`${status === '' ? '' : `text-field_${status}`}`)
+    label.text-field__label(for=id)= label
+    .text-field__wrapper
+      input.text-field__input(id=id)&attributes(attributes)
+      svg.text-field__icon.text-field__icon_success
+        use(
+          href=`${require('../../../assets/images/icons_sprite.svg')}#success`
+        )
+      svg.text-field__icon.text-field__icon_error
+        use(href=`${'../../../assets/images/icons_sprite.svg'}#error`)
